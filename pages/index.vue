@@ -1,78 +1,37 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        cu5-chia
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div class="container mx-auto">
+    <img
+      src="~/assets/images/Titlesvg.svg"
+      alt=""
+      class="mt-32 mb-24 mx-auto"
+    />
+    <div class="w-full text-center">
+      <div class="mx-auto w-3/4">
+        <h3 class="text-white opacity-50">About Chia</h3>
+        <h1 class="text-white text-6xl">
+          What is <span class="text-plt-green">Chia</span> plots?
+        </h1>
+        <div class="w-1/2 bg-plt-green mx-auto" style="height: 6px;"></div>
+        <p class="text-white opacity-50 w-3/4 mx-auto mt-8 leading-8">
+          Want to farm on the Chia network but don't feel like getting specific
+          hardware just for plotting? Tell us how many plots you want and we
+          will get you a download link within 24 hours. No technical skills
+          necessary!
+        </p>
+      </div>
+    </div>
+    <div class="w-full text-center mt-32">
+      <div class="mx-auto w-3/4">
+        <h3 class="text-white opacity-50">Our Service</h3>
+        <h1 class="text-white text-6xl">
+          It's Time For Purchase
+        </h1>
+        <div class="w-1/2 bg-plt-green mx-auto" style="height: 6px;"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
-
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
