@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full min-h-screen bg-plt-dark pt-10 pb-10">
+  <div class="w-full min-h-screen bg-dark pt-10 pb-10">
     <nav-bar />
     <Nuxt />
   </div>
@@ -11,11 +11,11 @@
   font-family: 'Montserrat', sans-serif;
 }
 .nuxt-link-exact-active {
-  @apply text-plt-green;
+  @apply text-green;
   @apply relative;
 }
 .nuxt-link-exact-active::after {
-  @apply bg-plt-green;
+  @apply bg-green;
   @apply absolute;
   content: "";
   width: 100%;

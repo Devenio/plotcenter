@@ -8,11 +8,12 @@ module.exports = {
   theme: {
     extend: {},
     colors: {
-      "plt-green": "#00d97e",
-      "plt-dark": "#08082c",
-      "white": "#ffffff"
+      green: "#00d97e",
+      "sec-green": "#0B4046",
+      dark: "#08082c",
+      white: "#ffffff"
     }
   },
   variants: {},
-  plugins: [],
-}
+  plugins: []
+};

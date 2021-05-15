@@ -10,35 +10,35 @@
       <nuxt-link
         to="/"
         tag="li"
-        class="cursor-pointer h-full px-3 mx-1 hover:text-plt-green"
+        class="cursor-pointer h-full px-3 mx-1 hover:text-green"
       >
         Home
       </nuxt-link>
       <nuxt-link
         to="/faq"
         tag="li"
-        class="cursor-pointer h-full px-3 mx-1 hover:text-plt-green"
+        class="cursor-pointer h-full px-3 mx-1 hover:text-green"
       >
         FAQ
       </nuxt-link>
       <nuxt-link
         to="/speed-test"
         tag="li"
-        class="cursor-pointer h-full px-3 mx-1 hover:text-plt-green"
+        class="cursor-pointer h-full px-3 mx-1 hover:text-green"
       >
         Speed Test
       </nuxt-link>
       <nuxt-link
         to="/about"
         tag="li"
-        class="cursor-pointer h-full px-3 mx-1 hover:text-plt-green"
+        class="cursor-pointer h-full px-3 mx-1 hover:text-green"
       >
         About
       </nuxt-link>
     </ul>
     <div>
-      <button class="btn text-white rounded-lg bg-plt-green">Sign up</button>
-      <button class="btn text-white rounded-lg border-2 border-plt-green ml-3">Sign in</button>
+      <button class="btn text-white rounded-lg bg-green">Sign up</button>
+      <button class="btn text-white rounded-lg border-2 border-green ml-3">Sign in</button>
     </div>
   </div>
 </template>
