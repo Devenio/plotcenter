@@ -36,7 +36,7 @@
         About
       </nuxt-link>
     </ul>
-    <div v-if="$route.path != '/register'">
+    <div v-if="$route.path != '/register' && $route.path != '/login'">
       <button class="btn text-white rounded-lg bg-green">
         <nuxt-link to="/register">Sign up</nuxt-link>
       </button>

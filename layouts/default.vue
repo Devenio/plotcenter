@@ -1,15 +1,15 @@
 <template>
-  <div class="w-full min-h-screen bg-dark pt-10">
+  <div class="w-full min-h-screen bg-dark pt-10 overflow-hidden">
     <nav-bar />
     <Nuxt />
-    <app-footer />
+    <app-footer v-if="$route.path != '/login' && $route.path != '/register'" />
   </div>
 </template>
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 * {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   @apply text-white;
 }
 .nuxt-link-exact-active {
