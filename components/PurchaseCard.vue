@@ -5,12 +5,12 @@
         <h1 class="text-6xl">13.00$</h1>
         <h3 class="text-white opacity-50 text-4xl">/PLOT</h3>
       </div>
-      <img src="~/assets/images/path.svg" alt="" class="absolute z-0" />
+      <img src="~/assets/images/Path.svg" alt="" class="absolute z-0" />
     </div>
     <div class="w-full p-10 pb-3">
       <div class="flex items-center justify-between">
         <div class="flex">
-          <img src="~/assets/images/location.svg" alt="" class="mr-2" />
+          <img src="~/assets/images/Location.svg" alt="" class="mr-2" />
           <h3>Europe & USA</h3>
         </div>
         <div

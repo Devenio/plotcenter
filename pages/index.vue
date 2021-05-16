@@ -154,7 +154,7 @@
             <div
               class="text-white text-center w-1/3 flex flex-col items-center mx-3"
             >
-              <img src="~/assets/images/location2.svg" alt="" />
+              <img src="~/assets/images/Location2.svg" alt="" />
               <h3 class="text-3xl capitalize my-8">locations</h3>
               <h6 class="opacity-50">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae
