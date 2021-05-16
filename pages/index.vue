@@ -123,7 +123,7 @@
           </div>
         </div>
       </div>
-      <div class="w-full text-center mt-32">
+      <div class="w-full text-center mt-32 mb-24">
         <div class="mx-auto w-3/4">
           <h3 class="text-white opacity-50">our services</h3>
           <h1 class="text-white text-6xl">

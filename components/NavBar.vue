@@ -36,15 +36,23 @@
         About
       </nuxt-link>
     </ul>
-    <div>
-      <button class="btn text-white rounded-lg bg-green">Sign up</button>
-      <button class="btn text-white rounded-lg border-2 border-green ml-3">Sign in</button>
+    <div v-if="$route.path != '/register'">
+      <button class="btn text-white rounded-lg bg-green">
+        <nuxt-link to="/register">Sign up</nuxt-link>
+      </button>
+      <button class="btn text-white rounded-lg border-2 border-green ml-3">
+        <nuxt-link to="/login">Sign in</nuxt-link>
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  mounted() {
+    console.log(this.$route.path);
+  }
+};
 </script>
 
 <style scoped>

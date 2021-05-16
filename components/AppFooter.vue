@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-sec-dark p-10 pb-0 mt-24">
+  <div class="w-full bg-sec-dark p-10 pb-0">
     <div class="w-full flex items-center justify-between px-10 text-white">
       <nuxt-link to="/contact">contact us</nuxt-link>
       <img src="~/assets/images/PlotCenter.png" alt="" />
