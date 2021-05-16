@@ -6,7 +6,8 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.5",
@@ -15,5 +16,8 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^3.4.2"
+  },
+  "engines": {
+    "node": "v14.16.0"
   }
 }
