@@ -5,7 +5,7 @@
         <h1 class="text-6xl">13.00$</h1>
         <h3 class="text-white opacity-50 text-4xl">/PLOT</h3>
       </div>
-      <img src="~/assets/images/path 310.svg" alt="" class="absolute z-0" />
+      <img src="~/assets/images/path.svg" alt="" class="absolute z-0" />
     </div>
     <div class="w-full p-10 pb-3">
       <div class="flex items-center justify-between">
