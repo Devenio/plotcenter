@@ -1,7 +1,8 @@
 <template>
-  <div class="w-full min-h-screen bg-dark pt-10 pb-10">
+  <div class="w-full min-h-screen bg-dark pt-10">
     <nav-bar />
     <Nuxt />
+    <app-footer />
   </div>
 </template>
 
