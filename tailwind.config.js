@@ -4,7 +4,7 @@ module.exports = {
     // removeDeprecatedGapUtilities: true,
     // purgeLayersByDefault: true,
   },
-  purge: [],
+  purge: ["./**/*.vue"],
   theme: {
     extend: {},
     colors: {
