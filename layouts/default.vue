@@ -6,10 +6,8 @@
   </div>
 </template>
 
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+<style scoped>
 * {
-  font-family: "Montserrat", sans-serif;
   @apply text-white;
 }
 .nuxt-link-exact-active {
