@@ -1,16 +1,10 @@
 <template>
   <div class="w-full p-10">
-    <div class="flex items-center justify-between">
-      <div class="text-white">
-        <h2 class="capitalize text-lg">welcome to dashboard</h2>
-        <h6 class="opacity-50">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </h6>
-      </div>
-      <div class="capitalize text-3xl font-medium text-green">
-        dashboard
-      </div>
-    </div>
+    <panel-title
+      title="welcome to dashboard"
+      subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      pageName="dashboard"
+    />
     <div class="w-full flex items-center justify-between text-white mt-16">
       <div class="mx-2 w-1/4 bg-th-dark text-center rounded-3xl p-5">
         <h2 class="text-sm">Total plots generated</h2>
@@ -63,7 +57,11 @@
 </template>
 
 <script>
+import PanelTitle from "@/components/utils/PanelTitle";
 export default {
-  layout: "panel"
+  layout: "panel",
+  components: {
+    PanelTitle
+  }
 };
 </script>
