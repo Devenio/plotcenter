@@ -90,11 +90,20 @@
             id="pool-id"
           />
 
-          <button type="submit" @click.prevent="" class="w-full py-3 font-medium text-2xl bg-green outline-none my-5 rounded-2xl">Sign Up</button>
+          <button
+            type="submit"
+            @click.prevent=""
+            style="outline: none"
+            class="w-full py-3 font-medium text-2xl bg-green my-5 rounded-2xl"
+          >
+            Sign Up
+          </button>
         </form>
       </div>
     </div>
-    <div class="w-1/2 text-center relative flex flex-col items-center justify-center">
+    <div
+      class="w-1/2 text-center relative flex flex-col items-center justify-center"
+    >
       <h1 class="text-5xl text-white relative z-10">
         Enter to the world of <span class="text-green">chia</span> currency
       </h1>

@@ -12,34 +12,25 @@
         </span>
         <nuxt-link to="/register" style="color: #1c6eb7">Sign up</nuxt-link>
         <form class="mt-10">
-          <div class="flex flex-col mt-3">
-            <label for="username" class="opacity-75 capitalize">
-              username
-            </label>
-            <input
-              type="text"
-              class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
-              placeholder="enter your username"
-              id="username"
-            />
-          </div>
-          <div class="flex flex-col mt-3">
-            <label for="password" class="opacity-75 capitalize">
-              password
-            </label>
-            <input
-              type="text"
-              class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
-              placeholder="enter your password"
-              id="password"
-            />
-            <a style="color: #1c6eb7" class="cursor-pointer">Forgot your password?</a>
-          </div>
+          <cu-input
+            input_id="username"
+            label="username"
+            input_placeholder="enter your username"
+          />
+          <cu-input
+            input_id="password"
+            label="password"
+            input_placeholder="enter your password"
+          />
+          <a style="color: #1c6eb7" class="cursor-pointer"
+            >Forgot your password?</a
+          >
 
           <button
             type="submit"
             @click.prevent=""
-            class="w-full py-3 font-medium text-2xl bg-green outline-none my-5 rounded-2xl"
+            class="w-full py-3 font-medium text-2xl bg-green my-5 rounded-2xl"
+            style="outline: none"
           >
             Sign In
           </button>

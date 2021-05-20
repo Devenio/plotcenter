@@ -34,11 +34,44 @@
           exit
         </panel-link>
       </ul>
-      <div
-        class="flex-grow bg-sec-dark ml-3"
-        style="min-height: 700px;border-radius: 65px;"
-      >
-        <Nuxt />
+      <div class="flex-grow">
+        <div
+          class="flex-grow bg-sec-dark ml-3"
+          style="min-height: 700px;border-radius: 65px;"
+        >
+          <Nuxt />
+        </div>
+        <div
+          class="flex-grow bg-sec-dark ml-3"
+          style="border-radius: 65px;"
+          v-if="$route.path === '/dashboard/keys' || $route.path === '/dashboard/purchase'"
+        >
+          <div class="w-full flex items-center p-10 mt-16 justify-betwen">
+            <div class="w-1/2 mr-5 text-white">
+              <h2 class="text-3xl mb-10">Enter your key information</h2>
+              <cu-input
+                label="key name"
+                input_id="key-name"
+                input_placeholder="choose a name for your key"
+              />
+              <cu-input
+                label="farmer id"
+                input_id="farmer-id"
+                input_placeholder="enter your farmer id"
+              />
+              <cu-input
+                label="pool id"
+                input_id="pool-id"
+                input_placeholder="enter your pool id"
+              />
+              <button class="py-2 px-5 bg-green text-white mt-10 rounded-xl">
+                Add a key
+                <fa :icon="['fas', 'angle-right']" size="lg" class="ml-3"></fa>
+              </button>
+            </div>
+            <img src="~/assets/images/group12.svg" class="w-1/2" />
+          </div>
+        </div>
       </div>
     </div>
   </div>

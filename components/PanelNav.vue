@@ -1,11 +1,13 @@
 <template>
   <div class="container mx-auto flex items-center justify-between">
-    <img
-      src="~/assets/images/PlotCenter.png"
-      alt="Logo"
-      width="254px"
-      class="cursor-pointer"
-    />
+    <nuxt-link to="/">
+      <img
+        src="~/assets/images/PlotCenter.png"
+        alt="Logo"
+        width="254px"
+        class="cursor-pointer"
+      />
+    </nuxt-link>
     <div>
       <div
         class="flex items-center jsutify-center py-3 px-5 bg-sec-dark rounded-xl"

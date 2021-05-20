@@ -10,17 +10,4 @@
 * {
   @apply text-white;
 }
-.nuxt-link-exact-active {
-  @apply text-green;
-  @apply relative;
-}
-.nuxt-link-exact-active::after {
-  @apply bg-green;
-  @apply absolute;
-  content: "";
-  width: 100%;
-  height: 2px;
-  bottom: -10px;
-  left: 0;
-}
 </style>
