@@ -24,9 +24,9 @@
           <fa :icon="['fas', 'key']" size="lg" class="mr-3"></fa>
           keys
         </panel-link>
-        <panel-link path="/dashboard/perchase">
+        <panel-link path="/dashboard/purchase">
           <fa :icon="['fas', 'shopping-bag']" size="lg" class="mr-3"></fa>
-          perchase
+          purchase
         </panel-link>
         <hr class="text-white opacity-50 my-10" />
         <panel-link path="/">
