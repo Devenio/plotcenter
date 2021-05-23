@@ -14,6 +14,19 @@ export default {
     });
   },
   getLocationsList() {
-    return apiClient.get("/locations-list");
+    return apiClient.get("/locations-list/");
+  },
+  verifyRegistration(user_id, timestamp, signature) {
+    return apiClient.post("/accounts/verify-registration/", {
+      user_id,
+      timestamp,
+      signature
+    });
+  },
+  login(login, password) {
+    return apiClient.post("/accounts/login/", {
+      login,
+      password
+    });
   }
 };

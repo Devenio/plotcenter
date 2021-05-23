@@ -175,9 +175,6 @@
 import EventService from "@/services/EventService";
 
 export default {
-  mounted() {
-    console.log(this.locations_list);
-  },
   async asyncData() {
     const { data } = await EventService.getLocationsList();
     return {

@@ -148,24 +148,42 @@ export default {
       }
     };
   },
+  mounted() {},
   methods: {
     register() {
       EventService.register(this.userData)
         .then(res => {
           console.log(res.data);
+          if (res.data) {
+            this.$swal
+              .fire({
+                title: "Registered successfully!",
+                text: "please check your email to login to your account.",
+                icon: "success",
+                confirmButtonText: "open email",
+                showCloseButton: true,
+                showCancelButton: true,
+                cancelButtonText: "close"
+              })
+              .then(result => {
+                if (result.isConfirmed) {
+                  window.open("https://gmail.com", "_blank");
+                }
+              });
+          }
         })
         .catch(err => {
-          console.log(err);
+          console.log(err.status);
+          if (err.message.includes("400")) {
+            this.$swal.fire({
+              title: "Error!",
+              text: "username or email has been taken before.",
+              icon: "error",
+              confirmButtonText: "ok",
+              showCloseButton: true
+            });
+          }
         });
-      // this.$axios
-      //   .post("https://api.plotcenter.net/v1/front/accounts/register/", {
-      //     username,
-      //     email,
-      //     password,
-      //     password_confirm
-      //   })
-      //   .then(res => console.log(res))
-      //   .catch(err => console.log(err));
     },
     checkForm() {
       const { username, email, password, password_confirm } = this.userData;

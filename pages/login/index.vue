@@ -11,24 +11,37 @@
           Dont have an account yet?
         </span>
         <nuxt-link to="/register" style="color: #1c6eb7">Sign up</nuxt-link>
-        <form class="mt-10">
-          <cu-input
-            input_id="username"
-            label="username"
-            input_placeholder="enter your username"
-          />
-          <cu-input
-            input_id="password"
-            label="password"
-            input_placeholder="enter your password"
-          />
+        <form class="mt-10" @submit.prevent="checkFormData()">
+          <div class="flex flex-col mt-3">
+            <label for="username" class="opacity-75 capitalize">
+              username or email
+            </label>
+            <input
+              type="text"
+              class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
+              placeholder="enter your username or email"
+              id="username"
+              v-model="login"
+            />
+          </div>
+          <div class="flex flex-col mt-3">
+            <label for="password" class="opacity-75 capitalize">
+              password
+            </label>
+            <input
+              type="text"
+              class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
+              placeholder="enter your password"
+              id="password"
+              v-model="password"
+            />
+          </div>
           <a style="color: #1c6eb7" class="cursor-pointer"
             >Forgot your password?</a
           >
 
           <button
             type="submit"
-            @click.prevent=""
             class="w-full py-3 font-medium text-2xl bg-green my-5 rounded-2xl"
             style="outline: none"
           >
@@ -53,7 +66,48 @@
 </template>
 
 <script>
-export default {};
+import EventService from "@/services/EventService";
+export default {
+  data() {
+    return {
+      login: "",
+      password: ""
+    };
+  },
+  methods: {
+    checkFormData() {
+      if (!this.login || !this.password) {
+        this.$swal.fire({
+          title: "Error!",
+          text: "username and password are required.",
+          icon: "error",
+          confirmButtonText: "ok",
+          showCloseButton: true
+        });
+      } else {
+        this.loginUser();
+      }
+    },
+    loginUser() {
+      EventService.login(this.login, this.password)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+          if (err.message.includes("400")) {
+            this.$swal.fire({
+              title: "Error!",
+              text: "invalid username/email or password.",
+              icon: "error",
+              confirmButtonText: "ok",
+              showCloseButton: true
+            });
+          }
+        });
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped></style>
