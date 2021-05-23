@@ -14,7 +14,8 @@ module.exports = {
       "sec-dark": "#000024",
       "th-dark": "#292a3350",
       white: "#ffffff",
-      transparent: "transparent"
+      transparent: "transparent",
+      red: "#ff4d54"
     }
   },
   variants: {},

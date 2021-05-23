@@ -30,9 +30,12 @@
       </div>
     </div>
     <div class="w-full mt-16 flex justify-center">
-      <purchase-card class="transform translate-x-6 scale-95" />
-      <purchase-card class="relative z-50" />
-      <purchase-card class="transform -translate-x-6 scale-95" />
+      <purchase-card
+        class="mx-2"
+        v-for="data in locations_list"
+        :key="data.id"
+        :data="data"
+      />
     </div>
     <div
       class="w-full p-10 bg-sec-green my-24 flex items-center justify-between text-white"
@@ -169,5 +172,17 @@
 </template>
 
 <script>
-export default {};
+import EventService from "@/services/EventService";
+
+export default {
+  mounted() {
+    console.log(this.locations_list);
+  },
+  async asyncData() {
+    const { data } = await EventService.getLocationsList();
+    return {
+      locations_list: data
+    };
+  }
+};
 </script>

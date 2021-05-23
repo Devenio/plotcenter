@@ -56,11 +56,7 @@
 </template>
 
 <script>
-export default {
-  mounted() {
-    console.log(this.$route.path);
-  }
-};
+export default {};
 </script>
 
 <style scoped>

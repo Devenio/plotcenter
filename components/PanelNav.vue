@@ -40,9 +40,6 @@
 
 <script>
 export default {
-  mounted() {
-    console.log(this.$route.path);
-  },
   data() {
     return {
       isOpen: false

@@ -11,7 +11,7 @@
           Already have an acount?
         </span>
         <nuxt-link to="/login" style="color: #1c6eb7">Sign in</nuxt-link>
-        <form class="mt-10">
+        <form class="mt-10" @submit.prevent="checkForm()">
           <div class="w-full flex flex-wrap items-center justify-between">
             <div class="flex flex-col mt-3">
               <label for="username" class="opacity-75 capitalize">
@@ -22,7 +22,11 @@
                 class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-56 text-sm"
                 placeholder="enter your username"
                 id="username"
+                v-model.lazy="userData.username"
               />
+              <p v-if="usernameErr" class="text-xs text-red">
+                {{ usernameErr }}
+              </p>
             </div>
             <div class="flex flex-col mt-3">
               <label for="email" class="opacity-75 capitalize">
@@ -33,7 +37,11 @@
                 class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-56 text-sm"
                 placeholder="enter your email address"
                 id="email"
+                v-model="userData.email"
               />
+              <p v-if="emailErr" class="text-xs text-red">
+                {{ emailErr }}
+              </p>
             </div>
             <div class="flex flex-col mt-3">
               <label for="password" class="opacity-75 capitalize">
@@ -44,7 +52,11 @@
                 class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-56 text-sm"
                 placeholder="enter your password"
                 id="password"
+                v-model="userData.password"
               />
+              <p v-if="passErr" class="text-xs text-red">
+                {{ passErr }}
+              </p>
             </div>
             <div class="flex flex-col mt-3">
               <label for="confirm-password" class="opacity-75 capitalize">
@@ -55,7 +67,11 @@
                 class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-56 text-sm"
                 placeholder="confirm your password"
                 id="confirm-password"
+                v-model="userData.password_confirm"
               />
+              <p v-if="conPassErr" class="text-xs text-red">
+                {{ conPassErr }}
+              </p>
             </div>
           </div>
           <h3 class="text-2xl mt-10 mb-5">
@@ -92,7 +108,6 @@
 
           <button
             type="submit"
-            @click.prevent=""
             style="outline: none"
             class="w-full py-3 font-medium text-2xl bg-green my-5 rounded-2xl"
           >
@@ -117,7 +132,85 @@
 </template>
 
 <script>
-export default {};
+import EventService from "@/services/EventService";
+export default {
+  data() {
+    return {
+      usernameErr: "",
+      emailErr: "",
+      passErr: "",
+      conPassErr: "",
+      userData: {
+        username: "",
+        email: "",
+        password: "",
+        password_confirm: ""
+      }
+    };
+  },
+  methods: {
+    register() {
+      EventService.register(this.userData)
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      // this.$axios
+      //   .post("https://api.plotcenter.net/v1/front/accounts/register/", {
+      //     username,
+      //     email,
+      //     password,
+      //     password_confirm
+      //   })
+      //   .then(res => console.log(res))
+      //   .catch(err => console.log(err));
+    },
+    checkForm() {
+      const { username, email, password, password_confirm } = this.userData;
+      !username
+        ? (this.usernameErr = "username is required.")
+        : (this.usernameErr = "");
+
+      if (!email) {
+        this.emailErr = "email is required.";
+      } else if (!email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
+        this.emailErr = "valid email is required.";
+      } else {
+        this.emailErr = "";
+      }
+
+      if (password.length < 8) {
+        this.passErr = "Password of at least 8 characters.";
+      } else if (
+        !password.match(
+          /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/
+        )
+      ) {
+        this.passErr =
+          "Password should contains number, uppercase and lowercase letter.";
+      } else {
+        this.passErr = "";
+      }
+
+      if (password != password_confirm) {
+        this.conPassErr = "confirm passwrod not matched.";
+      } else {
+        this.conPassErr = "";
+      }
+
+      if (
+        !this.usernameErr &&
+        !this.emailErr &&
+        !this.passErr &&
+        !this.conPassErr
+      ) {
+        this.register();
+      }
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped></style>
