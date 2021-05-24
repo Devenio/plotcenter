@@ -28,5 +28,11 @@ export default {
       login,
       password
     });
+  },
+  logout(token) {
+    const config = {
+      headers: { Authorization: `token ${token}` }
+    };
+    return apiClient.post("/accounts/logout/", null, config);
   }
 };

@@ -29,10 +29,13 @@
           purchase
         </panel-link>
         <hr class="text-white opacity-50 my-10" />
-        <panel-link path="/">
+        <li
+          class="flex items-center my-3 py-1 px-5 capitalize mt-10 cursor-pointer text-white"
+          @click="logout()"
+        >
           <fa :icon="['fas', 'sign-out-alt']" size="lg" class="mr-3"></fa>
           exit
-        </panel-link>
+        </li>
       </ul>
       <div class="flex-grow">
         <div
@@ -44,7 +47,10 @@
         <div
           class="flex-grow bg-sec-dark ml-3"
           style="border-radius: 65px;"
-          v-if="$route.path === '/dashboard/keys' || $route.path === '/dashboard/purchase'"
+          v-if="
+            $route.path === '/dashboard/keys' ||
+              $route.path === '/dashboard/purchase'
+          "
         >
           <div class="w-full flex items-center p-10 mt-16 justify-betwen">
             <div class="w-1/2 mr-5 text-white">
@@ -79,10 +85,33 @@
 
 <script>
 import PanelLink from "@/components/utils/PanelLinks";
-
+import EventService from "@/services/EventService";
 export default {
   components: {
     PanelLink
+  },
+  methods: {
+    logout() {
+      const token = this.$store.getters.token;
+      EventService.logout(token)
+        .then(res => {
+          console.log(res);
+          if (res.data.detail == "Logout successful") {
+            this.$store.dispatch("clearToken");
+            this.$swal.fire({
+              title: "logout successfully!",
+              text: "you have been logout from your account.",
+              icon: "success",
+              confirmButtonText: "ok",
+              showCloseButton: true
+            });
+            this.$router.push("/");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
 };
 </script>

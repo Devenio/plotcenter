@@ -62,6 +62,7 @@ export default {
   layout: "panel",
   components: {
     PanelTitle
-  }
+  },
+  middleware: "Auth"
 };
 </script>

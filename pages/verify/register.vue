@@ -16,8 +16,17 @@ export default {
 
     await EventService.verifyRegistration(user_id, +timestamp, signature)
       .then(res => {
-        console.log(res.data);
-        redirect("/dashboard");
+        this.$store.dispatch("setToken", res.data.token);
+        this.$swal.fire({
+          title: "vrified successfully!",
+          text: "you will be redirect to dashboard in next 2 seconds.",
+          icon: "success",
+          confirmButtonText: "ok",
+          showCloseButton: true
+        });
+        setTimeout(() => {
+          redirect("/dashboard");
+        }, 3000);
       })
       .catch(err => {
         console.log(err);

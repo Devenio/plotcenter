@@ -180,6 +180,6 @@ export default {
     return {
       locations_list: data
     };
-  }
+  },
 };
 </script>
