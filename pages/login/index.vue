@@ -29,14 +29,17 @@
               password
             </label>
             <input
-              type="text"
+              type="password"
               class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
               placeholder="enter your password"
               id="password"
               v-model="password"
             />
           </div>
-          <a style="color: #1c6eb7" class="cursor-pointer"
+          <a
+            style="color: #1c6eb7"
+            class="cursor-pointer"
+            @click="sendResetPassLink()"
             >Forgot your password?</a
           >
 
@@ -94,14 +97,11 @@ export default {
           this.$store.dispatch("setToken", res.data.token);
           this.$swal.fire({
             title: "login successfully!",
-            text: "you will be redirect to dashboard in next 2 seconds.",
             icon: "success",
             confirmButtonText: "ok",
             showCloseButton: true
           });
-          setTimeout(() => {
-            this.$router.push("/dashboard");
-          }, 3000);
+          this.$router.push("/dashboard");
         })
         .catch(err => {
           console.log(err);
@@ -114,6 +114,40 @@ export default {
               showCloseButton: true
             });
           }
+        });
+    },
+    async sendResetPassLink() {
+      const { value: email } = await this.$swal.fire({
+        title: "type your email to send reset password link",
+        input: "email",
+        inputAttributes: {
+          autocapitalize: "off"
+        },
+        showCancelButton: true,
+        confirmButtonText: "send link",
+        showLoaderOnConfirm: true,
+        allowOutsideClick: () => !this.$swal.isLoading()
+      });
+
+      EventService.send_rest_password_link(email)
+        .then(res => {
+          this.$swal.fire({
+            title: "success!",
+            text: res.data.detail + email,
+            icon: "success",
+            confirmButtonText: "ok",
+            showCloseButton: true
+          });
+        })
+        .catch(err => {
+          console.log(err);
+          this.$swal.fire({
+            title: "Error!",
+            text: "an error occurred.",
+            icon: "error",
+            confirmButtonText: "ok",
+            showCloseButton: true
+          });
         });
     }
   }

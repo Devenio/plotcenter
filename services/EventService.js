@@ -67,5 +67,17 @@ export default {
       { user_id, timestamp, signature, email },
       this.setConfig(token)
     );
+  },
+  send_rest_password_link(email) {
+    return apiClient.post(
+      "/accounts/send-reset-password-link/",
+      { email }
+    );
+  },
+  resetPassword(user_id, timestamp, signature, password, password_confirm) {
+    return apiClient.post(
+      "/accounts/reset-password/",
+      { user_id, timestamp, signature, password, password_confirm }
+    );
   }
 };
