@@ -58,11 +58,24 @@
 
 <script>
 import PanelTitle from "@/components/utils/PanelTitle";
+import EventService from "@/services/EventService";
+import { mapGetters } from "vuex";
 export default {
   layout: "panel",
   components: {
     PanelTitle
   },
-  middleware: "Auth"
+  middleware: "Auth",
+  fetch() {
+    const token = this.$store.getters.token;
+    this.$store.dispatch("panel/set_orders_list", token);
+    this.$store.dispatch("panel/setProfile", token);
+  },
+  computed: mapGetters(["token"]),
+  mounted() {
+    // EventService.getDashboard(this.$store.getters.token).then(res =>
+    //   console.log(res)
+    // );
+  }
 };
 </script>

@@ -24,6 +24,7 @@ import PanelTitle from "@/components/utils/PanelTitle";
 import KeyRow from "@/components/utils/KeyRow";
 export default {
   layout: "panel",
+  middleware: "Auth",
   components: {
     PanelTitle,
     KeyRow

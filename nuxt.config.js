@@ -47,5 +47,9 @@ export default {
       solid: true,
       brands: true
     }
+  },
+  loading: {
+    color: "#00d97e",
+    height: "5px"
   }
 };

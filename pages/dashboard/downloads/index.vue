@@ -25,7 +25,8 @@ import OrderRow from '~/components/utils/OrderRow.vue';
 import PanelTitle from "~/components/utils/PanelTitle.vue";
 export default {
   components: { PanelTitle, OrderRow },
-  layout: "panel"
+  layout: "panel",
+  middleware: "Auth",
 };
 </script>
 

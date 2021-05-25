@@ -25,12 +25,15 @@
 <script>
 import PanelTitle from "@/components/utils/PanelTitle";
 import OrderRow from "@/components/utils/OrderRow";
+import { mapState } from "vuex";
 export default {
   layout: "panel",
   components: {
     PanelTitle,
     OrderRow
-  }
+  },
+  middleware: "Auth",
+  computed: mapState(['panel/orders_list']),
 };
 </script>
 

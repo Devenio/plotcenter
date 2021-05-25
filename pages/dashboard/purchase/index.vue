@@ -67,6 +67,7 @@
 
 <script>
 export default {
-  layout: "panel"
+  layout: "panel",
+  middleware: "Auth",
 };
 </script>
