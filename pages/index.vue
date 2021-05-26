@@ -45,12 +45,14 @@
         <p class="text-6xl font-semibold" style="line-height: 4rem;">
           Sign up and earn a <span class="text-green">free</span> plot !
         </p>
-        <button
+        <nuxt-link
+          to="/register"
+          tag="button"
           class="text-white bg-green card rounded-3xl text-2xl mt-10"
           style="width: 277px; height: 85px;"
         >
           sign up now
-        </button>
+        </nuxt-link>
       </div>
       <img src="~/assets/images/gift-box.svg" alt="" />
     </div>
