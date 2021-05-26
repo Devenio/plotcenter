@@ -48,7 +48,7 @@
                 password
               </label>
               <input
-                type="text"
+                type="password"
                 class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-56 text-sm"
                 placeholder="enter your password"
                 id="password"
@@ -63,7 +63,7 @@
                 confirm-password
               </label>
               <input
-                type="text"
+                type="password"
                 class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-56 text-sm"
                 placeholder="confirm your password"
                 id="confirm-password"

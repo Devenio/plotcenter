@@ -129,26 +129,28 @@ export default {
         allowOutsideClick: () => !this.$swal.isLoading()
       });
 
-      EventService.send_rest_password_link(email)
-        .then(res => {
-          this.$swal.fire({
-            title: "success!",
-            text: res.data.detail + email,
-            icon: "success",
-            confirmButtonText: "ok",
-            showCloseButton: true
+      if (email) {
+        EventService.send_rest_password_link(email)
+          .then(res => {
+            this.$swal.fire({
+              title: "success!",
+              text: res.data.detail + email,
+              icon: "success",
+              confirmButtonText: "ok",
+              showCloseButton: true
+            });
+          })
+          .catch(err => {
+            console.log(err);
+            this.$swal.fire({
+              title: "Error!",
+              text: "an error occurred.",
+              icon: "error",
+              confirmButtonText: "ok",
+              showCloseButton: true
+            });
           });
-        })
-        .catch(err => {
-          console.log(err);
-          this.$swal.fire({
-            title: "Error!",
-            text: "an error occurred.",
-            icon: "error",
-            confirmButtonText: "ok",
-            showCloseButton: true
-          });
-        });
+      }
     }
   }
 };
