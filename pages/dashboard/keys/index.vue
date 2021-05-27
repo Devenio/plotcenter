@@ -12,9 +12,7 @@
         <th class="py-5 px-2 text-xs">pool id</th>
         <th class="py-5 px-2 text-xs rounded-r-3xl">actions</th>
       </tr>
-      <key-row />
-      <key-row />
-      <key-row />
+      <key-row v-for="key in keys" :key="key.id" :data="key" />
     </table>
   </div>
 </template>
@@ -28,6 +26,11 @@ export default {
   components: {
     PanelTitle,
     KeyRow
+  },
+  computed: {
+    keys() {
+      return this.$store.state.panel.keys
+    }
   }
 };
 </script>

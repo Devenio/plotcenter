@@ -8,19 +8,19 @@
     <div class="w-full flex items-center justify-between text-white mt-16">
       <div class="mx-2 w-1/4 bg-th-dark text-center rounded-3xl p-5">
         <h2 class="text-sm">Total plots generated</h2>
-        <h3 class="text-4xl font-medium">0</h3>
+        <h3 class="text-4xl font-medium">{{ dashboard.total ? dashboard.total : 0}}</h3>
       </div>
       <div class="mx-2 w-1/4 bg-th-dark text-center rounded-3xl p-5">
         <h2 class="text-sm">Total GB</h2>
-        <h3 class="text-4xl font-medium">0</h3>
+        <h3 class="text-4xl font-medium">{{ dashboard.size ? dashboard.size : 0}}</h3>
       </div>
       <div class="mx-2 w-1/4 bg-th-dark text-center rounded-3xl p-5">
         <h2 class="text-sm">Ready for download</h2>
-        <h3 class="text-4xl font-medium">0</h3>
+        <h3 class="text-4xl font-medium">{{ dashboard.ready ? dashboard.ready : 0}}</h3>
       </div>
       <div class="mx-2 w-1/4 bg-th-dark text-center rounded-3xl p-5">
         <h2 class="text-sm">Average cost / plot</h2>
-        <h3 class="text-4xl font-medium">0</h3>
+        <h3 class="text-4xl font-medium">{{ dashboard.average_cost ? dashboard.average_cost : 0 }}</h3>
       </div>
     </div>
     <div class="w-full flex items-center justify-between text-white mt-16">
@@ -59,8 +59,13 @@
 <script>
 import PanelTitle from "@/components/utils/PanelTitle";
 import EventService from "@/services/EventService";
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 export default {
+  data() {
+    return {
+      dashboard: {}
+    };
+  },
   layout: "panel",
   components: {
     PanelTitle
@@ -70,12 +75,25 @@ export default {
     const token = this.$store.getters.token;
     this.$store.dispatch("panel/set_orders_list", token);
     this.$store.dispatch("panel/setProfile", token);
+    this.$store.dispatch("panel/setDash", token);
+    this.$store.dispatch("panel/setKeys", token);
   },
-  computed: mapGetters(["token"]),
-  mounted() {
-    // EventService.getDashboard(this.$store.getters.token).then(res =>
-    //   console.log(res)
-    // );
+  computed: {
+    ...mapGetters(["token"])
+  },
+  beforeMount() {
+    this.dashboard = this.$store.state.panel.dashboard;
+  },
+  async asyncData({ store }) {
+    // try {
+    //   const token = store.getters.token;
+    //   const dashboard = await EventService.getDashboard(token);
+    //   return {
+    //     dashboard
+    //   };
+    // } catch (ex) {
+    //   console.log(ex);
+    // }
   }
 };
 </script>

@@ -51,23 +51,23 @@
         <th class="py-5 px-2 text-xs">farm key</th>
         <th class="py-5 px-2 text-xs w-1/3 rounded-r-3xl">pool key</th>
       </tr>
-      <tr class="text-center border-b-2 border-white border-opacity-25">
-        <td class="py-6">
-          <input type="checkbox" class="transform -translate-x-6" />
-          #855
-        </td>
-        <td>
-          sad435adf54165rz351fc45af
-        </td>
-        <td>sad435adf54165rz351fc45af</td>
-      </tr>
+      <key-row v-for="key in keys" :key="key.id" :data="key" :select_option="true" :isPurchase="true" />
     </table>
   </div>
 </template>
 
 <script>
+import KeyRow from "@/components/utils/KeyRow";
 export default {
   layout: "panel",
   middleware: "Auth",
+  components: {
+    KeyRow
+  },
+  computed: {
+    keys() {
+      return this.$store.state.panel.keys;
+    }
+  }
 };
 </script>

@@ -55,22 +55,45 @@
           <div class="w-full flex items-center p-10 mt-16 justify-betwen">
             <div class="w-1/2 mr-5 text-white">
               <h2 class="text-3xl mb-10">Enter your key information</h2>
-              <cu-input
-                label="key name"
-                input_id="key-name"
-                input_placeholder="choose a name for your key"
-              />
-              <cu-input
-                label="farmer id"
-                input_id="farmer-id"
-                input_placeholder="enter your farmer id"
-              />
-              <cu-input
-                label="pool id"
-                input_id="pool-id"
-                input_placeholder="enter your pool id"
-              />
-              <button class="py-2 px-5 bg-green text-white mt-10 rounded-xl">
+              <div class="flex flex-col mt-3">
+                <label for="key-name" class="opacity-75 capitalize">
+                  key name
+                </label>
+                <input
+                  type="text"
+                  class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
+                  placeholder="choose a name for your key"
+                  id="key-name"
+                />
+              </div>
+              <div class="flex flex-col mt-3">
+                <label for="farmer-id" class="opacity-75 capitalize">
+                  farmer id
+                </label>
+                <input
+                  type="text"
+                  class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
+                  placeholder="enter your farmer id"
+                  id="farmer-id"
+                  v-model="farmer_pk"
+                />
+              </div>
+              <div class="flex flex-col mt-3">
+                <label for="pool-id" class="opacity-75 capitalize">
+                  pool id
+                </label>
+                <input
+                  type="text"
+                  class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
+                  placeholder="enter your pool id"
+                  id="pool-id"
+                  v-model="pool_pk"
+                />
+              </div>
+              <button
+                class="py-2 px-5 bg-green text-white mt-10 rounded-xl"
+                @click="checkValues()"
+              >
                 Add a key
                 <fa :icon="['fas', 'angle-right']" size="lg" class="ml-3"></fa>
               </button>
@@ -87,6 +110,12 @@
 import PanelLink from "@/components/utils/PanelLinks";
 import EventService from "@/services/EventService";
 export default {
+  data() {
+    return {
+      pool_pk: "",
+      farmer_pk: ""
+    };
+  },
   components: {
     PanelLink
   },
@@ -110,6 +139,41 @@ export default {
         })
         .catch(err => {
           console.log(err);
+        });
+    },
+    checkValues() {
+      if (!this.pool_pk || !this.farmer_pk) {
+        this.$swal({
+          title: "Error!",
+          text: "plese fill out all the fields.",
+          showCloseButton: true,
+          icon: "error"
+        });
+      } else {
+        this.createKey();
+      }
+    },
+    createKey() {
+      const token = this.$store.getters.token;
+      EventService.createKey(token, this.pool_pk, this.farmer_pk)
+        .then(res => {
+          this.$swal({
+            title: "Key created successfully!",
+            icon: "success",
+            showCloseButton: true
+          });
+          this.pool_pk = this.farmer_pk = "";
+          this.$store.dispatch("panel/setKeys", token);
+        })
+        .catch(err => {
+          if (err.message.includes("400")) {
+            this.$swal({
+              title: "Error!",
+              text: "invalid pool or farmer key.",
+              icon: "error",
+              showCloseButton: true
+            });
+          }
         });
     }
   }

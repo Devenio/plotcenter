@@ -69,15 +69,28 @@ export default {
     );
   },
   send_rest_password_link(email) {
-    return apiClient.post(
-      "/accounts/send-reset-password-link/",
-      { email }
-    );
+    return apiClient.post("/accounts/send-reset-password-link/", { email });
   },
   resetPassword(user_id, timestamp, signature, password, password_confirm) {
+    return apiClient.post("/accounts/reset-password/", {
+      user_id,
+      timestamp,
+      signature,
+      password,
+      password_confirm
+    });
+  },
+  getKeys(token) {
+    return apiClient.get("/wallets-list/", this.setConfig(token));
+  },
+  deleteKey(token, id) {
+    return apiClient.delete(`/delete-wallet/${id}`, this.setConfig(token));
+  },
+  createKey(token, pool_pk, farmer_pk) {
     return apiClient.post(
-      "/accounts/reset-password/",
-      { user_id, timestamp, signature, password, password_confirm }
+      "/create-wallet/",
+      { pool_pk, farmer_pk },
+      this.setConfig(token)
     );
   }
 };

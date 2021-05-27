@@ -2,7 +2,9 @@ import EventService from "@/services/EventService.js";
 
 export const state = () => ({
   orders_list: [],
-  profile: []
+  profile: [],
+  dashboard: {},
+  keys: []
 });
 
 export const getters = {};
@@ -13,7 +15,13 @@ export const mutations = {
   },
   SET_PROFILE: (state, data) => {
     state.profile = data;
-  }
+  },
+  SET_DASH: (state, data) => {
+    state.dashboard = data;
+  },
+  SET_KEYS: (state, data) => {
+    state.keys = data;
+  },
 };
 
 export const actions = {
@@ -34,5 +42,23 @@ export const actions = {
       .catch(err => {
         console.log(err);
       });
-  }
+  },
+  setDash: ({ commit }, token) => {
+    EventService.getDashboard(token)
+      .then(res => {
+        commit("SET_DASH", res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
+  setKeys: ({ commit }, token) => {
+    EventService.getKeys(token)
+      .then(res => {
+        commit("SET_KEYS", res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
 };

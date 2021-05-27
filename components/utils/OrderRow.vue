@@ -1,11 +1,18 @@
 <template>
   <tr class="text-center border-b-2 border-white border-opacity-25">
-    <td class="py-6">#855</td>
+    <td class="py-6">#{{ order.id }}</td>
     <td>
-      <div class="p-2 bg-th-dark rounded-3xl opacity-75">reserved</div>
+      <div
+        class="p-2 rounded-3xl opacity-75"
+        :class="order.status == 'Completed' ? ['bg-sec-green', 'text-green'] : 'bg-th-dark'"
+      >
+        {{ order.status }}
+      </div>
     </td>
-    <td>0</td>
-    <td>0/10</td>
+    <td>{{ order.plots_retention_days }} days</td>
+    <td>{{ order.completed }}/{{ order.plot_count }}</td>
+    <td>{{ order.amount }}$</td>
+    <td>{{ order.location }}</td>
     <td>
       <button class="py-1 px-5 bg-green rounded-xl">Pay</button>
       <div
@@ -21,21 +28,9 @@
 <script>
 export default {
   props: {
-    field_1: {
-      type: String,
-      default: "#855"
-    },
-    field_2: {
-      type: String,
-      default: "reserved"
-    },
-    field_3: {
-      type: Number,
-      default: 0
-    },
-    filed_4: {
-      type: String,
-      default: "0/10"
+    order: {
+      type: Object,
+      require: true
     }
   }
 };

@@ -134,7 +134,7 @@ export default {
           .then(res => {
             this.$swal.fire({
               title: "success!",
-              text: res.data.detail + email,
+              text: res.data.detail + " to " + email,
               icon: "success",
               confirmButtonText: "ok",
               showCloseButton: true

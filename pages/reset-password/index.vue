@@ -97,14 +97,12 @@ export default {
         .then(res => {
           this.$swal.fire({
             title: "password reset successfully!",
-            text: "you will be redirect to login in next 2 seconds.",
+            text: "now login to your account for continue.",
             icon: "success",
             confirmButtonText: "ok",
             showCloseButton: true
           });
-          setTimeout(() => {
-            router.push("/login");
-          }, 2000);
+          this.$router.push("/login");
         })
         .catch(err => {
           console.log(err);

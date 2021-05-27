@@ -13,9 +13,6 @@
         <th class="py-5 px-2 text-xs">plot phase</th>
         <th class="py-5 px-2 text-xs w-1/3 rounded-r-3xl">actions</th>
       </tr>
-      <order-row />
-      <order-row />
-      <order-row />
     </table>
   </div>
 </template>
