@@ -42,7 +42,9 @@
           class="flex-grow bg-sec-dark ml-3"
           style="min-height: 700px;border-radius: 65px;"
         >
-          <Nuxt />
+          <keep-alive>
+            <Nuxt />
+          </keep-alive>
         </div>
         <div
           class="flex-grow bg-sec-dark ml-3"

@@ -84,7 +84,7 @@ export default {
     return apiClient.get("/wallets-list/", this.setConfig(token));
   },
   deleteKey(token, id) {
-    return apiClient.delete(`/delete-wallet/${id}`, this.setConfig(token));
+    return apiClient.delete(`/delete-wallet/${id}/`, this.setConfig(token));
   },
   createKey(token, pool_pk, farmer_pk) {
     return apiClient.post(
@@ -92,5 +92,22 @@ export default {
       { pool_pk, farmer_pk },
       this.setConfig(token)
     );
+  },
+  createOrder(token, wallet, location, plot_count, expire) {
+    return apiClient.post(
+      "/create-order/",
+      { wallet, location, plot_count, expire },
+      this.setConfig(token)
+    );
+  },
+  pay(token, order, pgw) {
+    return apiClient.post(
+      "/pay/",
+      { order, pgw },
+      this.setConfig(token)
+    );
+  },
+  pgws_list() {
+    return apiClient.get("/pgws-list/");
   }
 };

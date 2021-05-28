@@ -1,7 +1,13 @@
 <template>
   <tr class="text-center border-b-2 border-white border-opacity-25">
     <td class="py-6">
-      <input type="radio" class="transform -translate-x-6 cursor-pointer scale-150" v-if="select_option" name="key_select" />
+      <input
+        type="radio"
+        class="transform -translate-x-6 cursor-pointer scale-150"
+        v-if="select_option"
+        name="key_select"
+        @change="selectedKey(data.id)"
+      />
       #{{ data.id }}
     </td>
     <td>
@@ -39,6 +45,7 @@ export default {
   },
   methods: {
     deleteKey(id) {
+      const token = this.$store.getters.token;
       this.$swal({
         title: `remove key #${id}`,
         text: `are you sure you want delete key #${id} ?`,
@@ -47,14 +54,14 @@ export default {
         showCancelButton: true
       }).then(res => {
         if (res.isConfirmed) {
-          EventService.deleteKey(this.$store.token, id)
+          EventService.deleteKey(token, id)
             .then(res => {
               this.$swal({
                 title: `key #${id} removed successfully!`,
                 icon: "success",
                 showCloseButton: true
               });
-              console.log(res);
+              this.$store.dispatch("panel/setKeys", token);
             })
             .catch(err => {
               this.$swal({
@@ -67,6 +74,9 @@ export default {
             });
         }
       });
+    },
+    selectedKey(id) {
+      this.$store.commit("panel/UPDATE_ORDER_WALLET",id)
     }
   }
 };

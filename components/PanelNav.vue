@@ -1,13 +1,13 @@
 <template>
   <div class="container mx-auto flex items-center justify-between">
-    <nuxt-link to="/">
-      <img
-        src="~/assets/images/PlotCenter.png"
-        alt="Logo"
-        width="254px"
-        class="cursor-pointer"
-      />
-    </nuxt-link>
+    <!-- <nuxt-link to="/"> -->
+    <img
+      src="~/assets/images/PlotCenter.png"
+      alt="Logo"
+      width="254px"
+      class="cursor-pointer"
+    />
+    <!-- </nuxt-link> -->
     <div>
       <div
         class="flex items-center jsutify-center py-3 px-5 bg-sec-dark rounded-xl"
@@ -23,12 +23,14 @@
       <div v-if="isOpen" class="absolute rounded-xl bg-sec-dark mt-3 p-5">
         <div
           class="flex items-center py-2 px-4 border-2 border-green rounded-xl cursor-pointer"
+          @click="$router.push('/dashboard/profile')"
         >
           <img src="~/assets/icons/user2.svg" class="mr-3" />
           <h3 class="text-sm">edit profile</h3>
         </div>
         <div
           class="flex items-center py-2 px-4 border-2 border-green rounded-xl cursor-pointer mt-3"
+          @click="logout()"
         >
           <img src="~/assets/icons/Logout.svg" class="mr-3" />
           <h3 class="text-sm">exit</h3>
@@ -44,6 +46,29 @@ export default {
     return {
       isOpen: false
     };
+  },
+  methods: {
+    logout() {
+      const token = this.$store.getters.token;
+      EventService.logout(token)
+        .then(res => {
+          console.log(res);
+          if (res.data.detail == "Logout successful") {
+            this.$store.dispatch("clearToken");
+            this.$swal.fire({
+              title: "logout successfully!",
+              text: "you have been logout from your account.",
+              icon: "success",
+              confirmButtonText: "ok",
+              showCloseButton: true
+            });
+            this.$router.push("/");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
 };
 </script>
