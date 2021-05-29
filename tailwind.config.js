@@ -15,7 +15,8 @@ module.exports = {
       "th-dark": "#292a3350",
       white: "#ffffff",
       transparent: "transparent",
-      red: "#ff4d54"
+      red: "#ff4d54",
+      "sec-red": "#ff4d5427"
     }
   },
   variants: {},

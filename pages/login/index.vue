@@ -95,6 +95,7 @@ export default {
       EventService.login(this.login, this.password)
         .then(res => {
           this.$store.dispatch("setToken", res.data.token);
+          document.cookie = `token=${res.data.token};`;
           this.$swal.fire({
             title: "login successfully!",
             icon: "success",

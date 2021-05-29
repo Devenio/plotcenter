@@ -13,6 +13,7 @@
         <th class="py-5 px-2 text-xs">completed</th>
         <th class="py-5 px-2 text-xs">amount</th>
         <th class="py-5 px-2 text-xs">location</th>
+        <th class="py-5 px-2 text-xs">wallet</th>
         <th class="py-5 px-2 text-xs rounded-r-3xl">actions</th>
       </tr>
       <order-row

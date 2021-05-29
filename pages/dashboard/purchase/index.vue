@@ -397,7 +397,7 @@ export default {
             text: "something went wrong.please try again later.",
             icon: "error",
             showCloseButton: true
-          })
+          });
         });
     }
   },
@@ -408,10 +408,20 @@ export default {
     };
   },
   mounted() {
-    console.log(this.locations_list);
-    this.step = 1;
-    this.$store.commit("panel/UPDATE_ORDER_LOC", "");
-    this.$store.commit("panel/UPDATE_ORDER_WALLET", "");
+    if (this.$route.query.step) {
+      const query = this.$route.query;
+      this.step = query.step;
+      this.$store.commit("panel/UPDATE_ORDER_PLOTS", query.pc);
+      this.$store.commit("panel/UPDATE_ORDER_LOC", query.loc);
+      this.$store.commit("panel/UPDATE_ORDER_WALLET", query.wallet);
+      this.extra_time = query.prd;
+      this.retention_time = 5;
+      this.location_price = query.amount;
+    } else {
+      this.step = 1;
+      this.$store.commit("panel/UPDATE_ORDER_LOC", "");
+      this.$store.commit("panel/UPDATE_ORDER_WALLET", "");
+    }
   }
 };
 </script>

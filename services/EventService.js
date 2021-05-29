@@ -109,5 +109,8 @@ export default {
   },
   pgws_list() {
     return apiClient.get("/pgws-list/");
+  },
+  getInvoices(token, id) {
+    return apiClient.get(`/get-invoice/${id}/`, this.setConfig(token));
   }
 };

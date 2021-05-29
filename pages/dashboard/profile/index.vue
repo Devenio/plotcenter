@@ -1,90 +1,164 @@
 <template>
   <div class="w-full p-10">
     <panel-title
-      title="profile information"
-      subTitle="here you can see your profile detail"
+      title="edit your profile"
+      subTitle="You can change your personal information here"
       pageName="profile"
     />
-    <ul class="w-full mt-16 flex flex-wrap text-white">
-      <li class="w-1/2 my-1">
-        <span class="text-lg">first name:</span>
-        <span class="opacity-75">{{ profile.first_name }}</span>
+    <ul
+      class="w-full border-b-2 border-white border-opacity-50 mt-16 flex text-white justify-start"
+    >
+      <li
+        class="py-3 px-2 mx-3 opacity-75 cursor-pointer"
+        @click="part = 1"
+        :class="part === 1 ? ['text-green', 'border-b-4', 'border-green'] : ''"
+      >
+        Edit profile
       </li>
-      <li class="w-1/2 my-1">
-        <span class="text-lg">last name:</span>
-        <span class="opacity-75">{{ profile.last_name }}</span>
-      </li>
-      <li class="w-1/2 my-1">
-        <span class="text-lg">Email:</span>
-        <input
-          type="text"
-          class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-64 text-sm"
-          placeholder="enter your email"
-          v-model="email"
-        />
-        <br />
-        <button
-          class="py-2 px-5 bg-sec-green rounded-3xl"
-          @click="registerEmail()"
-        >
-          change email
-        </button>
-      </li>
-      <li class="w-1/2 my-1">
-        <span class="text-lg">username:</span>
-        <span class="opacity-75">{{ profile.username }}</span>
-      </li>
-      <li class="w-1/2 mt-10 cursor-pointer text-lg" style="color: #1c6eb7">
+      <li
+        class="py-3 mx-5 opacity-75 cursor-pointer"
+        @click="part = 2"
+        :class="part === 2 ? ['text-green', 'border-b-4', 'border-green'] : ''"
+      >
         change password
       </li>
+      <li
+        class="py-3 mx-5 opacity-75 cursor-pointer"
+        @click="part = 3"
+        :class="part === 3 ? ['text-green', 'border-b-4', 'border-green'] : ''"
+      >
+        change email address
+      </li>
     </ul>
-    <form class="text-white" @submit.prevent="checkForm()">
-      <div class="w-full flex flex-wrap items-center justify-between">
-        <div class="flex flex-col mt-3 w-full">
-          <label for="old-password" class="opacity-75 capitalize">
-            old password
+    <div class="w-full flex items-start" v-if="part === 1">
+      <ul class="w-3/4 mt-16 flex flex-wrap text-white justify-around">
+        <li class="flex flex-col mt-3">
+          <label for="username" class="opacity-75 capitalize">
+            first name
           </label>
           <input
             type="text"
-            class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
-            placeholder="enter your old-password"
-            id="old-password"
-            v-model="old_password"
+            class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-56 text-sm"
+            placeholder="enter your first name"
+            id="username"
+            v-model="profile.first_name"
           />
-        </div>
-        <div class="flex flex-col mt-3 w-full">
-          <label for="password" class="opacity-75 capitalize">
-            password
+        </li>
+        <li class="flex flex-col mt-3">
+          <label for="username" class="opacity-75 capitalize">
+            last name
           </label>
           <input
-            type="password"
-            class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none password-white w-full text-sm"
-            placeholder="enter your password"
-            id="password"
-            v-model="password"
+            type="text"
+            class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-56 text-sm"
+            placeholder="enter your last name"
+            id="username"
+            v-model="profile.last_name"
           />
-        </div>
-        <div class="flex flex-col mt-3 w-full">
-          <label for="pass-confirm" class="opacity-75 capitalize">
-            password confirm
+        </li>
+        <li class="flex flex-col mt-3">
+          <label for="username" class="opacity-75 capitalize">
+            Email
           </label>
           <input
-            type="password"
-            class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
-            placeholder="enter your password confirm"
-            id="pass-confirm"
-            v-model="password_confirm"
+            type="text"
+            class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-56 text-sm"
+            placeholder="enter your email"
+            id="username"
+            v-model="email1"
           />
+        </li>
+        <li class="flex flex-col mt-3">
+          <label for="username" class="opacity-75 capitalize">
+            username
+          </label>
+          <input
+            type="text"
+            class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-56 text-sm"
+            placeholder="enter your email"
+            id="username"
+            v-model="profile.username"
+          />
+        </li>
+      </ul>
+      <img
+        src="~/assets/images/group16.svg"
+        alt=""
+        class="mt-5"
+        style="width: 500px;"
+      />
+    </div>
+    <form class="text-white" @submit.prevent="checkForm()" v-if="part === 2">
+      <div class="w-full flex items-start mt-10">
+        <div>
+          <div class="w-1/2 flex flex-wrap items-center justify-between">
+            <div class="flex flex-col mt-3 w-full">
+              <label for="old-password" class="opacity-75 capitalize">
+                current password
+              </label>
+              <input
+                type="text"
+                class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
+                placeholder="enter your old-password"
+                id="old-password"
+                v-model="old_password"
+              />
+            </div>
+            <div class="flex flex-col mt-3 w-full">
+              <label for="password" class="opacity-75 capitalize">
+                password
+              </label>
+              <input
+                type="password"
+                class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none password-white w-full text-sm"
+                placeholder="enter your password"
+                id="password"
+                v-model="password"
+              />
+            </div>
+            <div class="flex flex-col mt-3 w-full">
+              <label for="pass-confirm" class="opacity-75 capitalize">
+                password confirm
+              </label>
+              <input
+                type="password"
+                class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
+                placeholder="enter your password confirm"
+                id="pass-confirm"
+                v-model="password_confirm"
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+            style="outline: none"
+            class="px-5 py-3 font-medium bg-green my-5 rounded-2xl"
+          >
+            Change Password
+          </button>
         </div>
+        <img src="~/assets/images/group17.svg" alt="" style="width: 400px;" />
       </div>
-      <button
-        type="submit"
-        style="outline: none"
-        class="w-full py-3 font-medium text-2xl bg-green my-5 rounded-2xl"
-      >
-        Change Password
-      </button>
     </form>
+    <div
+      v-if="part === 3"
+      class="w-full flex items-center justify-center mt-10 flex-col"
+    >
+      <label for="username" class="opacity-75 capitalize text-white">
+        E-mail
+      </label>
+      <input
+        type="text"
+        class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white text-sm"
+        placeholder="enter your email"
+        style="width: 500px"
+        id="username"
+        v-model="email"
+      />
+      <button class="py-3 px-5 bg-green text-white rounded-xl mt-10" @click="registerEmail()">
+        send verification
+      </button>
+    </div>
   </div>
 </template>
 
@@ -98,8 +172,10 @@ export default {
       password: "",
       old_password: "",
       password_confirm: "",
+      email1: "",
       email: "",
-      origEmail: ""
+      origEmail: "",
+      part: 1
     };
   },
   middleware: "Auth",
@@ -109,6 +185,7 @@ export default {
   },
   mounted() {
     this.profile = this.$store.state.panel.profile;
+    this.email1 = this.$store.state.panel.profile.email;
     this.email = this.$store.state.panel.profile.email;
     this.origEmail = this.$store.state.panel.profile.email;
   },
@@ -198,8 +275,7 @@ export default {
             console.log(email);
             this.$swal.fire({
               title: "success",
-              text:
-                res.data.detail,
+              text: res.data.detail,
               icon: "success",
               confirmButtonText: "ok",
               showCloseButton: true

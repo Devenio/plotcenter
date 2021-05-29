@@ -1,16 +1,17 @@
 <template>
-  <div class="p-32 flex items-center justify-center">
-    <div class="p-10">
+  <div class="p-32 flex items-center justify-around">
+    <div class="p-10 bg-sec-dark rounded-3xl">
       <h1 class="text-3xl text-center">
-        reset your passwprd:
+        Set a new password
       </h1>
+      <h6 class="text-sm opacity-50">Choose a new password for your account</h6>
       <div class="flex flex-col mt-10">
         <label for="password" class="opacity-75 capitalize">
           password
         </label>
         <input
           type="password"
-          class="bg-sec-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
+          class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
           placeholder="enter your new password"
           id="password"
           v-model="password"
@@ -22,7 +23,7 @@
         </label>
         <input
           type="password"
-          class="bg-sec-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
+          class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white w-full text-sm"
           placeholder="enter your password confirm"
           id="password"
           v-model="password_confirm"
@@ -36,6 +37,12 @@
       >
         reset
       </button>
+    </div>
+    <div class="flex flex-col items-center">
+      <h1 class="text-4xl relative z-10">
+        Your <strong class="text-green">Safety</strong> is one of our priority
+      </h1>
+      <img src="~/assets/images/group15.svg" alt="" class="transform -translate-y-12 relative z-0" />
     </div>
   </div>
 </template>
