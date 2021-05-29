@@ -1,5 +1,16 @@
 <template>
-  <tr class="text-center border-b-2 border-white border-opacity-25">
+  <tr
+    class="text-center border-b-2 border-white border-opacity-25 hover:bg-dark cursor-pointer"
+    @click="
+      orderClicked(
+        order.id,
+        order.amount,
+        order.completed,
+        order.plot_count,
+        order.status
+      )
+    "
+  >
     <td class="py-6">#{{ order.id }}</td>
     <td>
       <div
@@ -34,12 +45,6 @@
       >
         Pay
       </button>
-      <div
-        class="px-2 py-1 inline rounded-xl cursor-pointer"
-        style="background-color: #ff4d5460"
-      >
-        <fa :icon="['fas', 'trash-alt']" style="background-color: #ff4d54"></fa>
-      </div>
     </td>
   </tr>
 </template>
@@ -58,10 +63,14 @@ export default {
       this.$router.push(
         `/dashboard/purchase?step=3&id=${id}&wallet=${wallet}&pc=${pc}&loc=${location}&prd=${prd}&amount=${amount}`
       );
+    },
+    orderClicked(id, amount, completed, count, status) {
+      if (status == "Completed") {
+        this.$router.push(
+          `/dashboard/orders/plots?id=${id}&amount=${amount}&co=${completed}&count=${count}`
+        );
+      }
     }
-  },
-  mounted() {
-    console.log(this.order);
   }
 };
 </script>

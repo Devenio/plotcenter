@@ -44,10 +44,6 @@ export default {
   middleware: "Auth",
   beforeMount() {
     this.orders_list = this.$store.state.panel.orders_list
-  },
-  methods: {
-    orderClick() {
-    }
   }
 };
 </script>

@@ -24,11 +24,11 @@
         FAQ
       </nuxt-link>
       <nuxt-link
-        to="/speed-test"
+        to="/calculater"
         tag="li"
         class="cursor-pointer h-full px-3 mx-1 hover:text-green link"
       >
-        Speed Test
+        Calculater
       </nuxt-link>
       <nuxt-link
         to="/about"

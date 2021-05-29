@@ -101,16 +101,15 @@ export default {
     );
   },
   pay(token, order, pgw) {
-    return apiClient.post(
-      "/pay/",
-      { order, pgw },
-      this.setConfig(token)
-    );
+    return apiClient.post("/pay/", { order, pgw }, this.setConfig(token));
   },
   pgws_list() {
     return apiClient.get("/pgws-list/");
   },
   getInvoices(token, id) {
     return apiClient.get(`/get-invoice/${id}/`, this.setConfig(token));
+  },
+  getOrderPlots(token, id) {
+    return apiClient.get(`/order-plots-list/${id}/`, this.setConfig(token));
   }
 };
