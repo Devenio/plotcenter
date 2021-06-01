@@ -45,7 +45,7 @@
       exchange rate
     </h1>
     <div class="mt-8 border-2 border-green rounded-3xl p-10 bg-sec-dark">
-      <h1 class="text-2xl mb-3">$832 USD per <span class="text-green">XCH</span></h1>
+      <h1 class="text-2xl mb-3">€832 USD per <span class="text-green">XCH</span></h1>
       <p>Default exchange rate from Coinbase. Updated every 30 min.</p>
     </div>
   </div>

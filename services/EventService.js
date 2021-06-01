@@ -111,5 +111,17 @@ export default {
   },
   getOrderPlots(token, id) {
     return apiClient.get(`/order-plots-list/${id}/`, this.setConfig(token));
+  },
+  getFaq() {
+    return apiClient.get("/faq-list/");
+  },
+  getFreePlotStatus() {
+    return apiClient.get("/free-plot/status/");
+  },
+  notifyMe(email, location) {
+    return apiClient.post("/notify-me/", { email, location });
+  },
+  get_notification_list() {
+    return apiClient.get("/notifications-list/");
   }
 };

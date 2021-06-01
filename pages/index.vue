@@ -179,9 +179,14 @@ import EventService from "@/services/EventService";
 export default {
   async asyncData() {
     const { data } = await EventService.getLocationsList();
+    const status = await EventService.getFreePlotStatus();
     return {
-      locations_list: data
+      locations_list: data,
+      free_status: status.data.status
     };
   },
+  mounted(){ 
+    console.log(this.free_status);
+  }
 };
 </script>

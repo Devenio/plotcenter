@@ -196,7 +196,7 @@
           class="p-2 flex items-center mt-5 text-sm text-green bg-sec-green rounded-xl"
         >
           <fa :icon="['fas', 'circle']" class="mr-2"></fa>
-          there is 1$ cost per each extra day
+          there is €1 cost per each extra day
         </div>
       </div>
     </div>
@@ -228,18 +228,18 @@
           <div>
             <h3 class="text-2xl capitalize">total price</h3>
             <h6 class="mt-5 text-green text-4xl text-center">
-              {{ plot_count * location_price + extra_time * plot_count }}$
+              €{{ plot_count * location_price + extra_time * plot_count }}
             </h6>
           </div>
           <span class="flex flex-col items-start leading-6 ml-10">
             <div>
               <strong class="text-green">{{ plot_count }}</strong> plots *
-              {{ location_price }}$
+              €{{ location_price }}
             </div>
             <strong class="text-xl">+</strong>
             <div>
               <strong class="text-green">{{ extra_time }}</strong> extra
-              retention days * 1$
+              retention days * 1€
             </div>
           </span>
         </div>
@@ -252,7 +252,7 @@
             v-show="pgw.discount"
           >
             <fa :icon="['fas', 'tags']" class="mr-2"></fa>
-            {{ pgw.discount }}$ discount to pay with {{ pgw.name }}
+            €{{ pgw.discount }} discount to pay with {{ pgw.name }}
           </div>
           <div
             class="mt-5 flex items-center"
@@ -401,10 +401,16 @@ export default {
         });
     }
   },
-  async asyncData() {
+  async asyncData({ query }) {
+    let pgws_list = [];
     const { data } = await EventService.getLocationsList();
+    if (query.step == 3) {
+      const pgw = await EventService.pgws_list();
+      pgws_list = pgw.data;
+    }
     return {
-      locations_list: data
+      locations_list: data,
+      pgws_list
     };
   },
   mounted() {

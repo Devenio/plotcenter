@@ -1,8 +1,8 @@
 <template>
   <div class="container mx-auto pb-24">
-    <img src="~/assets/images/group18.svg" alt="" class="mx-auto mt-16" />
+    <img src="~/assets/images/group24.svg" alt="" class="mx-auto mt-16" />
     <h1 class="text-white text-6xl text-center font-medium mt-10">
-      Frequently Asked <span class="text-green">Questions</span>
+      Check New <span class="text-green">Notifications</span>
     </h1>
     <h3 class="text-white opacity-50 text-center mb-24">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -10,14 +10,14 @@
     </h3>
     <div
       class="border-b-2 border-white border-opacity-25"
-      v-for="(item, index) in faq_list"
+      v-for="(item, index) in notif_list"
       :key="index"
     >
       <button
         class="accordion w-full py-10 flex items-center justify-between px-10"
       >
         <div>
-          {{ item.question }}
+          {{ item.title }}
         </div>
         <div class="text-4xl text-green font-bold">+</div>
       </button>
@@ -27,7 +27,7 @@
           class="text-green mr-3"
         ></fa>
         <p>
-          {{ item.answer }}
+          {{ item.text }}
         </p>
       </div>
     </div>
@@ -55,9 +55,9 @@ export default {
   },
   async asyncData({}) {
     try {
-      const { data } = await EventService.getFaq();
+      const { data } = await EventService.get_notification_list();
       return {
-        faq_list: data
+        notif_list: data
       };
     } catch (err) {
       console.log(err);

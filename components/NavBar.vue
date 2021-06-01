@@ -37,6 +37,13 @@
       >
         About
       </nuxt-link>
+      <nuxt-link
+        to="/notif"
+        tag="li"
+        class="cursor-pointer h-full px-3 mx-1 hover:text-green link"
+      >
+        Notification
+      </nuxt-link>
     </ul>
     <div v-if="$route.path != '/register' && $route.path != '/login'">
       <nuxt-link

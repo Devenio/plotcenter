@@ -26,7 +26,7 @@
     </td>
     <td>{{ order.plots_retention_days }} days</td>
     <td>{{ order.completed }}/{{ order.plot_count }}</td>
-    <td>{{ order.amount }}$</td>
+    <td>€{{ order.amount }}</td>
     <td>{{ order.location }}</td>
     <td>{{ order.wallet }}</td>
     <td>
@@ -43,7 +43,7 @@
           )
         "
       >
-        Pay
+        pay
       </button>
     </td>
   </tr>
