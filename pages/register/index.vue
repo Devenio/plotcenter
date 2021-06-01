@@ -153,7 +153,6 @@ export default {
     register() {
       EventService.register(this.userData)
         .then(res => {
-          console.log(res.data);
           if (res.data) {
             this.$swal
               .fire({
@@ -173,7 +172,6 @@ export default {
           }
         })
         .catch(err => {
-          console.log(err.status);
           if (err.message.includes("400")) {
             this.$swal.fire({
               title: "Error!",

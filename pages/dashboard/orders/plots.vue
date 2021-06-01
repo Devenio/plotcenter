@@ -75,7 +75,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.plots);
     const token = this.$store.state.token;
     this.plots.forEach(plot => {
       this.$axios

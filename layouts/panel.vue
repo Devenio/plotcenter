@@ -126,7 +126,6 @@ export default {
       const token = this.$store.getters.token;
       EventService.logout(token)
         .then(res => {
-          console.log(res);
           if (res.data.detail == "Logout successful") {
             this.$store.dispatch("clearToken");
             this.$swal.fire({

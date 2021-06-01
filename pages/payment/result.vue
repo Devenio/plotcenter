@@ -102,7 +102,6 @@ export default {
     EventService.getInvoices(token, this.$route.query.ref)
       .then(res => {
         this.data = res.data;
-        console.log(res);
       })
       .catch(err => {
         console.log(err);

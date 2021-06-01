@@ -42,7 +42,6 @@ export default {
     return apiClient.get("/orders-list/", this.setConfig(token));
   },
   changePass(token, old_password, password, password_confirm) {
-    console.log({ old_password, password, password_confirm });
     return apiClient.post(
       "/accounts/change-password/",
       { old_password, password, password_confirm },

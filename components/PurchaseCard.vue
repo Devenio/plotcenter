@@ -122,8 +122,6 @@ export default {
         showLoaderOnConfirm: true,
         allowOutsideClick: () => !this.$swal.isLoading()
       });
-      console.log(email);
-
       if (email) {
         EventService.notifyMe(email, location)
           .then(res => {
@@ -148,9 +146,6 @@ export default {
       }
     }
   },
-  mounted() {
-    console.log(this.data);
-  }
 };
 </script>
 

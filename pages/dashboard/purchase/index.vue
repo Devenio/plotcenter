@@ -387,7 +387,6 @@ export default {
     pay(token, order, pgw) {
       EventService.pay(token, order, pgw)
         .then(res => {
-          console.log(res);
           window.open(res.data.redirect_url, "_blank");
         })
         .catch(err => {

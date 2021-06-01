@@ -84,16 +84,5 @@ export default {
   beforeMount() {
     this.dashboard = this.$store.state.panel.dashboard;
   },
-  async asyncData({ store }) {
-    // try {
-    //   const token = store.getters.token;
-    //   const dashboard = await EventService.getDashboard(token);
-    //   return {
-    //     dashboard
-    //   };
-    // } catch (ex) {
-    //   console.log(ex);
-    // }
-  }
 };
 </script>

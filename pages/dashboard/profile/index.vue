@@ -258,7 +258,6 @@ export default {
       }
     },
     registerEmail() {
-      console.log("clicked");
       const email = this.profile.email;
       if (this.email === this.origEmail) {
         this.$swal.fire({
@@ -271,8 +270,6 @@ export default {
       } else {
         EventService.registerEmail(this.$store.getters.token, email)
           .then(res => {
-            console.log(res);
-            console.log(email);
             this.$swal.fire({
               title: "success",
               text: res.data.detail,

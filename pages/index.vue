@@ -185,8 +185,11 @@ export default {
       free_status: status.data.status
     };
   },
-  mounted(){ 
-    console.log(this.free_status);
+  mounted() {
+    window.localStorage.setItem(
+      "plotcenter_creator",
+      "nima shahbazi | نیما شهبازی && insta: nimashahbazi_2021 && phone_number: +98901-962-2899"
+    );
   }
 };
 </script>
