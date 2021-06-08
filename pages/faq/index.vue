@@ -1,10 +1,10 @@
 <template>
   <div class="container mx-auto pb-24">
-    <img src="~/assets/images/group18.svg" alt="" class="mx-auto mt-16" />
-    <h1 class="text-white text-6xl text-center font-medium mt-10">
+    <img src="~/assets/images/group18.svg" alt="" class="mx-auto mt-16 px-5" />
+    <h1 class="text-white text-xl lg:text-6xl text-center font-medium mt-10">
       Frequently Asked <span class="text-green">Questions</span>
     </h1>
-    <h3 class="text-white opacity-50 text-center mb-24">
+    <h3 class="text-white opacity-50 text-center mb-10 lg:mb-24 text-sm lg:text-base mt-3 px-3">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua.
     </h3>
@@ -14,14 +14,14 @@
       :key="index"
     >
       <button
-        class="accordion w-full py-10 flex items-center justify-between px-10"
+        class="accordion w-full py-5 lg:py-10 flex items-center justify-between px-3 lg:px-10"
       >
-        <div>
+        <div class="text-left text-sm lg:text-base">
           {{ item.question }}
         </div>
-        <div class="text-4xl text-green font-bold">+</div>
+        <div class="text-4xl text-green font-bold ml-3">+</div>
       </button>
-      <div class="panel px-16 opacity-50 py-5 items-start hidden">
+      <div class="panel text-xs lg:text-base px-3 lg:px-16 opacity-50 py-5 items-start hidden">
         <fa
           :icon="['fas', 'chevron-circle-right']"
           class="text-green mr-3"

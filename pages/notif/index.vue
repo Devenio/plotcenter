@@ -1,10 +1,10 @@
 <template>
   <div class="container mx-auto pb-24">
-    <img src="~/assets/images/group24.svg" alt="" class="mx-auto mt-16" />
-    <h1 class="text-white text-6xl text-center font-medium mt-10">
+    <img src="~/assets/images/group24.svg" alt="" class="mx-auto mt-16 px-5" />
+    <h1 class="text-white text-xl lg:text-6xl text-center font-medium mt-10">
       Check New <span class="text-green">Notifications</span>
     </h1>
-    <h3 class="text-white opacity-50 text-center mb-24">
+    <h3 class="text-white opacity-50 text-center mb-10 lg:mb-24 mt-3">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua.
     </h3>
@@ -14,14 +14,14 @@
       :key="index"
     >
       <button
-        class="accordion w-full py-10 flex items-center justify-between px-10"
+        class="accordion w-full py-5 lg:py-10 flex items-center justify-between px-5 lg:px-10"
       >
         <div>
           {{ item.title }}
         </div>
         <div class="text-4xl text-green font-bold">+</div>
       </button>
-      <div class="panel px-16 opacity-50 py-5 items-start hidden">
+      <div class="panel lg:px-16 opacity-50 py-5 items-start hidden text-xs lg:text-base px-3">
         <fa
           :icon="['fas', 'chevron-circle-right']"
           class="text-green mr-3"
