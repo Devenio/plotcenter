@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-between">
+  <div class="flex items-center text-center flex-col-reverse lg:flex-row justify-between">
     <div class="text-white">
       <h2 class="capitalize text-lg">{{ title }}</h2>
       <h6 class="opacity-50">

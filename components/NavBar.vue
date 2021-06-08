@@ -3,7 +3,7 @@
     <div
       class="container mx-auto flex items-center justify-between px-3 lg:px-0"
     >
-      <fa :icon="['fas', 'bars']" size="lg" class="text-green lg:hidden" @click="open = !open" />
+      <fa :icon="['fas', 'bars']" size="2x" class="text-green lg:hidden" @click="open = !open" />
       <nuxt-link to="/">
         <img
           src="~/assets/images/PlotCenter.png"

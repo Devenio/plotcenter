@@ -1,30 +1,30 @@
 <template>
-  <div class="w-full p-10">
+  <div class="w-full py-5 px-3 lg:p-10">
     <panel-title
       title="welcome to dashboard"
       subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit."
       pageName="dashboard"
     />
-    <div class="w-full flex items-center justify-between text-white mt-16">
-      <div class="mx-2 w-1/4 bg-th-dark text-center rounded-3xl p-5">
+    <div class="w-full flex flex-wrap lg:flex-no-wrap items-center justify-between text-white mt-5 lg:mt-16">
+      <div class="mx-1 flex-grow mt-2 lg:w-1/4 bg-th-dark text-center rounded-3xl p-5">
         <h2 class="text-sm">Total plots generated</h2>
         <h3 class="text-4xl font-medium">{{ dashboard.total ? dashboard.total : 0}}</h3>
       </div>
-      <div class="mx-2 w-1/4 bg-th-dark text-center rounded-3xl p-5">
+      <div class="mx-1 flex-grow mt-2 lg:w-1/4 bg-th-dark text-center rounded-3xl p-5">
         <h2 class="text-sm">Total GB</h2>
         <h3 class="text-4xl font-medium">{{ dashboard.size ? dashboard.size : 0}}</h3>
       </div>
-      <div class="mx-2 w-1/4 bg-th-dark text-center rounded-3xl p-5">
+      <div class="mx-1 flex-grow mt-2 lg:w-1/4 bg-th-dark text-center rounded-3xl p-5">
         <h2 class="text-sm">Ready for download</h2>
         <h3 class="text-4xl font-medium">{{ dashboard.ready ? dashboard.ready : 0}}</h3>
       </div>
-      <div class="mx-2 w-1/4 bg-th-dark text-center rounded-3xl p-5">
+      <div class="mx-1 flex-grow mt-2 lg:w-1/4 bg-th-dark text-center rounded-3xl p-5">
         <h2 class="text-sm">Average cost / plot</h2>
         <h3 class="text-4xl font-medium">{{ dashboard.average_cost ? dashboard.average_cost : 0 }}</h3>
       </div>
     </div>
-    <div class="w-full flex items-center justify-between text-white mt-16">
-      <div class="mx-2 w-1/2 bg-th-dark rounded-3xl p-5" style="height: 400px">
+    <div class="w-full flex flex-col lg:flex-row items-center justify-between text-white mt-16">
+      <div class="mx-2 lg:w-1/2 bg-th-dark rounded-3xl p-5" style="height: 400px">
         <div>pending unpaid orders</div>
         <div>
           <img
@@ -38,8 +38,7 @@
         </div>
       </div>
       <div
-        class="mx-2 w-1/2 bg-th-dark text-center rounded-3xl p-5 flex items-center justify-between"
-        style="height: 400px"
+        class="mx-2 mt-2 lg:mt-0 lg:w-1/2 bg-th-dark text-center rounded-3xl p-5 flex flex-col-reverse lg:flex-row items-center justify-between"
       >
         <div class="text-left">
           <h1 class="capitalize text-2xl font-medium">
@@ -50,7 +49,7 @@
             get free plot
           </button>
         </div>
-        <img src="~/assets/images/group11.svg" class="w-1/2 ml-5" alt="" />
+        <img src="~/assets/images/group11.svg" class="lg:w-1/2 lg:ml-5" alt="" />
       </div>
     </div>
   </div>

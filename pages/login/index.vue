@@ -1,8 +1,8 @@
 <template>
-  <div class="container mx-auto mt-24 flex">
-    <div class="w-1/2 mr-10">
-      <div class="w-full bg-sec-dark py-5 px-10" style="border-radius: 75px;">
-        <h2 class="text-white text-3xl font-medium">Sign in</h2>
+  <div class="container mx-auto mt-10 lg:mt-24 lg:flex">
+    <div class="lg:w-1/2 lg:mr-10">
+      <div class="w-full bg-sec-dark py-5 px-5 lg:px-10 rounded-lg lg:rounded-3xl">
+        <h2 class="text-white text-xl lg:text-3xl font-medium">Sign in</h2>
         <span class="text-white opacity-50 text-sm">
           to access to your account
         </span>
@@ -42,10 +42,10 @@
             @click="sendResetPassLink()"
             >Forgot your password?</a
           >
-
+          <br>
           <button
             type="submit"
-            class="w-full py-3 font-medium text-2xl bg-green my-5 rounded-2xl"
+            class="w-full py-3 font-medium lg:text-2xl bg-green mt-3 lg:my-5 rounded-2xl"
             style="outline: none"
           >
             Sign In
@@ -54,7 +54,7 @@
       </div>
     </div>
     <div
-      class="w-1/2 text-center relative flex flex-col items-center justify-center"
+      class="w-1/2 text-center relative flex-col items-center justify-center hidden lg:flex"
     >
       <h1 class="text-5xl text-white relative z-10">
         Enter to the world of <span class="text-green">chia</span> currency

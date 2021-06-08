@@ -1,8 +1,8 @@
 <template>
-  <div class="w-full min-h-screen bg-dark pt-10 overflow-hidden pb-16">
+  <div class="w-full min-h-screen bg-dark pt-5 lg:pt-10 overflow-hidden lg:pb-16">
     <panel-nav />
-    <div class="container flex items-start mx-auto mt-10">
-      <ul>
+    <div class="container flex items-start mx-auto mt-3 lg:mt-10">
+      <ul class="hidden lg:block">
         <li><h1 class="text-4xl text-center text-white">LOGO</h1></li>
         <panel-link path="/dashboard">
           <fa :icon="['fas', 'home']" size="lg" class="mr-3"></fa>
@@ -37,10 +37,10 @@
           exit
         </li>
       </ul>
-      <div class="flex-grow">
+      <div class="lg:flex-grow">
         <div
-          class="flex-grow bg-sec-dark ml-3"
-          style="min-height: 700px;border-radius: 65px;"
+          class="flex-grow bg-sec-dark lg:ml-3 lg:rounded-3xl"
+          style="min-height: 700px;"
         >
           <keep-alive>
             <Nuxt />
