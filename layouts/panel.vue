@@ -37,7 +37,7 @@
           exit
         </li>
       </ul>
-      <div class="lg:flex-grow">
+      <div class="w-full lg:w-auto lg:flex-grow">
         <div
           class="flex-grow bg-sec-dark lg:ml-3 lg:rounded-3xl"
           style="min-height: 700px;"
@@ -47,15 +47,14 @@
           </keep-alive>
         </div>
         <div
-          class="flex-grow bg-sec-dark ml-3"
-          style="border-radius: 65px;"
+          class="flex-grow bg-sec-dark lg:ml-3 lg:rounded-3xl"
           v-if="
             $route.path === '/dashboard/keys' ||
               $route.path === '/dashboard/purchase'
           "
         >
           <div class="w-full flex items-center p-10 mt-16 justify-betwen">
-            <div class="w-1/2 mr-5 text-white">
+            <div class="lg:w-1/2 mr-5 text-white">
               <h2 class="text-3xl mb-10">Enter your key information</h2>
               <div class="flex flex-col mt-3">
                 <label for="key-name" class="opacity-75 capitalize">
@@ -100,7 +99,7 @@
                 <fa :icon="['fas', 'angle-right']" size="lg" class="ml-3"></fa>
               </button>
             </div>
-            <img src="~/assets/images/group12.svg" class="w-1/2" />
+            <img src="~/assets/images/group12.svg" class="w-1/2 hidden lg:block" />
           </div>
         </div>
       </div>

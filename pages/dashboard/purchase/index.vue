@@ -1,10 +1,10 @@
 <template>
-  <div class="w-full p-10">
+  <div class="w-full p-5 lg:p-10">
     <!-- steps bar -->
     <div class="w-full flex items-start justify-around text-white">
       <div class="flex items-center flex-col w-40 text-center">
         <div
-          class="w-10 h-10 rounded-full flex items-center justify-center bg-green mb-3"
+          class="lg:w-10 lg:h-10 w-5 h-5 rounded-full flex items-center justify-center bg-green mb-3"
           :class="step == 1 ? 'bg-green' : 'bg-th-dark'"
         >
           1
@@ -17,7 +17,7 @@
       </div>
       <div class="flex items-center flex-col w-40 text-center">
         <div
-          class="w-10 h-10 rounded-full flex items-center justify-center mb-3"
+          class="lg:w-10 lg:h-10 w-5 h-5 rounded-full flex items-center justify-center mb-3"
           :class="step == 2 ? 'bg-green' : 'bg-th-dark'"
         >
           2
@@ -30,7 +30,7 @@
       </div>
       <div class="flex items-center flex-col w-40 text-center">
         <div
-          class="w-10 h-10 rounded-full flex items-center justify-center mb-3"
+          class="lg:w-10 lg:h-10 w-5 h-5 rounded-full flex items-center justify-center mb-3"
           :class="step == 3 ? 'bg-green' : 'bg-th-dark'"
         >
           3
@@ -44,10 +44,10 @@
     </div>
     <!-- content -->
     <div
-      class="text-center text-3xl text-white mt-10 flex items-center justify-between"
+      class="text-center lg:text-3xl text-white mt-10 flex items-center justify-between"
     >
       <button
-        class="py-2 px-5 border-2 border-green text-lg text-white rounded-2xl justify-self-end"
+        class="py-2 px-3 lg:px-5 border-2 border-green text-xs lg:text-lg text-white rounded-2xl justify-self-end"
         :class="step > 1 ? 'visible' : 'invisible'"
         @click="step--"
       >
@@ -56,7 +56,7 @@
       </button>
       {{ titles[step - 1] }}
       <button
-        class="py-2 px-5 border-2 border-green text-lg text-white rounded-2xl justify-self-end"
+        class="py-2 px-3 lg:px-5 border-2 border-green lg:text-lg text-white rounded-2xl text-xs justify-self-end"
         @click="nextStep()"
         :class="step < 3 ? 'visible' : 'invisible'"
       >
@@ -66,7 +66,7 @@
     </div>
     <!-- step 1 -->
     <table
-      class="mt-10 w-full overflow-hidden text-sm text-white"
+      class="mt-10 w-full overflow-hidden text-sm text-white hidden lg:table"
       v-if="step == 1"
     >
       <tr class="capitalize bg-th-dark py-10">
@@ -82,6 +82,46 @@
         :isPurchase="true"
       />
     </table>
+
+    <div
+      v-for="key in keys"
+      :key="key.id"
+      v-show="step == 1"
+      class="w-full rounded-lg my-3 p-3 text-white px-5 bg-dark lg:hidden"
+    >
+      <div class="flex justify-between items-center">
+        <div class="text-center text-sm">
+          <input
+            type="radio"
+            class="cursor-pointer scale-150"
+            name="key_select"
+            @change="selectedKey(key.id)"
+          />
+          key name:
+          <br />
+          #{{ key.id }}
+        </div>
+        <div
+          class="w-10 h-10 rounded-full bg-sec-green flex items-center justify-center text-green"
+          @click="openUM = key.id"
+        >
+          <fa :icon="['fas', 'angle-down']" />
+        </div>
+      </div>
+      <div
+        class="mx-3 mt-5 text-sm divide-y-2 divide-opacity-25 divide-white"
+        v-if="openUM == key.id"
+      >
+        <div class="flex items-center py-5 justify-between">
+          farmer id
+          <span>{{ key.farmer_pk }}</span>
+        </div>
+        <div class="flex items-center py-5 justify-between">
+          pool id
+          <span>{{ key.pool_pk }}</span>
+        </div>
+      </div>
+    </div>
 
     <!-- step 2 -->
     <table class="mt-10 w-full overflow-hidden text-white" v-if="step == 2">
@@ -141,7 +181,7 @@
 
     <div
       v-if="step == 2"
-      class="w-full flex items-center justify-around mt-16 text-white"
+      class="w-full flex flex-col lg:flex-row space-y-3 items-center justify-around mt-16 text-white"
     >
       <div
         class="p-5 bg-dark rounded-3xl flex flex-col items-center select-none"
@@ -221,32 +261,33 @@
 
     <div
       v-if="step == 3"
-      class="w-full p-10 text-white bg-th-dark rounded-3xl mt-10"
+      class="w-full p-5 lg:p-10 text-white bg-th-dark rounded-3xl mt-10"
     >
-      <div class="w-full flex items-start justify-between">
-        <div class="flex items-center">
+      <div class="w-full flex flex-col lg:flex-row items-center lg:items-start justify-between">
+        <div class="flex flex-col lg:flex-row space-y-3 items-center">
           <div>
             <h3 class="text-2xl capitalize">total price</h3>
             <h6 class="mt-5 text-green text-4xl text-center">
               €{{ plot_count * location_price + extra_time * plot_count }}
             </h6>
           </div>
-          <span class="flex flex-col items-start leading-6 ml-10">
+          <span class="flex flex-col items-center lg:items-start leading-6 lg:ml-10">
             <div>
-              <strong class="text-green">{{ plot_count }}</strong> plots *
-              €{{ location_price }}
+              <strong class="text-green">{{ plot_count }}</strong> plots * €{{
+                location_price
+              }}
             </div>
             <strong class="text-xl">+</strong>
             <div>
-              <strong class="text-green">{{ extra_time }}</strong> extra
+              <strong class="text-green text-center">{{ extra_time }}</strong> extra
               retention days * 1€
             </div>
           </span>
         </div>
         <div>
-          <h3 class="text-2xl">choose your plane</h3>
+          <h3 class="text-2xl mt-5 lg:mt-0 text-center">choose your plane</h3>
           <div
-            class="p-2 flex items-center mt-5 text-sm text-green bg-sec-green rounded-xl"
+            class="p-2 flex items-center text-center mt-5 text-sm text-green bg-sec-green rounded-xl"
             v-for="pgw in pgws_list"
             :key="pgw.id"
             v-show="pgw.discount"
@@ -255,7 +296,7 @@
             €{{ pgw.discount }} discount to pay with {{ pgw.name }}
           </div>
           <div
-            class="mt-5 flex items-center"
+            class="mt-5 flex items-center justify-center text-center"
             v-for="pgw in pgws_list"
             :key="pgw.id + 'b'"
           >
@@ -301,7 +342,8 @@ export default {
       extra_time: 0,
       retention_time: 0,
       location_price: 0,
-      plane: ""
+      plane: "",
+      openUM: NaN
     };
   },
   layout: "panel",
@@ -315,6 +357,9 @@ export default {
     }
   },
   methods: {
+    selectedKey(id) {
+      this.$store.commit("panel/UPDATE_ORDER_WALLET", id);
+    },
     nextStep() {
       const order_wallet = this.$store.state.panel.order.wallet;
       const order_loc = this.$store.state.panel.order.location;

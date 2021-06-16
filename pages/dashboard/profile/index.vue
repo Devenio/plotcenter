@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full p-10">
+  <div class="w-full p-5 lg:p-10">
     <panel-title
       title="edit your profile"
       subTitle="You can change your personal information here"
@@ -9,21 +9,21 @@
       class="w-full border-b-2 border-white border-opacity-50 mt-16 flex text-white justify-start"
     >
       <li
-        class="py-3 px-2 mx-3 opacity-75 cursor-pointer"
+        class="py-3 px-2 mx-3 opacity-75 cursor-pointer text-xs text-center lg:text-base"
         @click="part = 1"
         :class="part === 1 ? ['text-green', 'border-b-4', 'border-green'] : ''"
       >
         Edit profile
       </li>
       <li
-        class="py-3 mx-5 opacity-75 cursor-pointer"
+        class="py-3 mx-5 opacity-75 cursor-pointer text-xs text-center lg:text-base"
         @click="part = 2"
         :class="part === 2 ? ['text-green', 'border-b-4', 'border-green'] : ''"
       >
         change password
       </li>
       <li
-        class="py-3 mx-5 opacity-75 cursor-pointer"
+        class="py-3 mx-5 opacity-75 cursor-pointer text-xs text-center lg:text-base"
         @click="part = 3"
         :class="part === 3 ? ['text-green', 'border-b-4', 'border-green'] : ''"
       >
@@ -84,14 +84,14 @@
       <img
         src="~/assets/images/group16.svg"
         alt=""
-        class="mt-5"
+        class="mt-5 hidden lg:block"
         style="width: 500px;"
       />
     </div>
     <form class="text-white" @submit.prevent="checkForm()" v-if="part === 2">
       <div class="w-full flex items-start mt-10">
         <div>
-          <div class="w-1/2 flex flex-wrap items-center justify-between">
+          <div class="lg:w-1/2 flex flex-wrap items-center justify-between">
             <div class="flex flex-col mt-3 w-full">
               <label for="old-password" class="opacity-75 capitalize">
                 current password
@@ -132,12 +132,12 @@
           <button
             type="submit"
             style="outline: none"
-            class="px-5 py-3 font-medium bg-green my-5 rounded-2xl"
+            class="px-5 py-3 font-medium bg-green my-5 rounded-lg lg:rounded-2xl"
           >
             Change Password
           </button>
         </div>
-        <img src="~/assets/images/group17.svg" alt="" style="width: 400px;" />
+        <img src="~/assets/images/group17.svg" alt="" class="hidden lg:block" style="width: 400px;" />
       </div>
     </form>
     <div
@@ -149,9 +149,8 @@
       </label>
       <input
         type="text"
-        class="bg-dark p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white text-sm"
+        class="bg-dark w-full lg:w-3/4 p-3 my-2 rounded-xl placeholder-white placeholder-opacity-25 outline-none text-white text-sm"
         placeholder="enter your email"
-        style="width: 500px"
         id="username"
         v-model="email"
       />
